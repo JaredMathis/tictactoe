@@ -9,7 +9,7 @@ function availableCells(game) {
     let index = 1;
     game.forEach(row => {
         row.forEach(col => {
-            if (col === ' ') {
+            if (col !== 'X' && col !== 'O') {
                 result.push(index);
             }
             index++;
