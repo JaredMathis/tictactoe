@@ -11,6 +11,7 @@ function play() {
         printGame(game);
         let available = availableCells(game);
         if (available.length === 0) {
+            console.log('Draw!');
             break;
         }
 
