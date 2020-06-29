@@ -25,9 +25,12 @@ function play() {
             console.log('Invalid cell');
         }
     
-        move(game, choice);
-
-        let winner = check(game);
+        let result = move(game, choice);
+        if (result.success) {
+            printGame(game);
+            console.log(result.winner + ' wins!');
+            break;
+        }
     }
 }
 
