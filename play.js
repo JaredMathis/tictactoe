@@ -26,6 +26,8 @@ function play() {
         }
     
         move(game, choice);
+
+        let winner = check(game);
     }
 }
 
