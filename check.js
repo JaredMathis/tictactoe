@@ -12,7 +12,28 @@ function check(game) {
     result = checkCol(game, 1); if (result.success) return result;
     result = checkCol(game, 2); if (result.success) return result;
 
+    result = checkDiag1(game); if (result.success) return result;
+    result = checkDiag2(game); if (result.success) return result;
+
     return result;
+}
+
+function checkDiag2(game) {
+    let slots = [
+        game[0][2], 
+        game[1][1], 
+        game[2][0], 
+    ];
+    return winner(slots);
+}
+
+function checkDiag1(game) {
+    let slots = [
+        game[0][0], 
+        game[1][1], 
+        game[2][2], 
+    ];
+    return winner(slots);
 }
 
 function checkCol(game, col) {
@@ -47,6 +68,23 @@ function winner(slots) {
         [1,2,3],
         [4,5,6],
         [7,8,9]
+    ]);
+    assert(() => result.success === false);
+})();
+(function () {
+    let result = check([
+        [1,2,'X'],
+        [4,'X',6],
+        ['X',8,9]
+    ]);
+    assert(() => result.success === true);
+    assert(() => result.winner === 'X');
+})();
+(function () {
+    let result = check([
+        ['X',2,3],
+        [4,'O',6],
+        [7,8,'X']
     ]);
     assert(() => result.success === false);
 })();
