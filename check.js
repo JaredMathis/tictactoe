@@ -8,7 +8,20 @@ function check(game) {
     result = checkRow(game, 1); if (result.success) return result;
     result = checkRow(game, 2); if (result.success) return result;
 
+    result = checkCol(game, 0); if (result.success) return result;
+    result = checkCol(game, 1); if (result.success) return result;
+    result = checkCol(game, 2); if (result.success) return result;
+
     return result;
+}
+
+function checkCol(game, col) {
+    let slots = [
+        game[0][col], 
+        game[1][col], 
+        game[2][col], 
+    ];
+    return winner(slots);
 }
 
 function checkRow(game, row) {
@@ -36,6 +49,33 @@ function winner(slots) {
         [7,8,9]
     ]);
     assert(() => result.success === false);
+})();
+(function () {
+    let result = check([
+        [1,2,'X'],
+        [4,5,'X'],
+        [7,8,'X']
+    ]);
+    assert(() => result.success === true);
+    assert(() => result.winner === 'X');
+})();
+(function () {
+    let result = check([
+        [1,'O',3],
+        [4,'O',6],
+        [7,'O',9]
+    ]);
+    assert(() => result.success === true);
+    assert(() => result.winner === 'O');
+})();
+(function () {
+    let result = check([
+        ['X',2,3],
+        ['X',5,6],
+        ['X',8,9]
+    ]);
+    assert(() => result.success === true);
+    assert(() => result.winner === 'X');
 })();
 (function () {
     let result = check([
