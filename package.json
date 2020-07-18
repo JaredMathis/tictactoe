@@ -1,10 +1,11 @@
 {
   "name": "wlj-tictactoe",
   "version": "1.0.0",
-  "description": "",
+  "description": "To play the game:     > node play",
   "main": "newGame.js",
   "dependencies": {
-    "readline-sync": "^1.4.10"
+    "readline-sync": "^1.4.10",
+    "wlj-utilities": "^1.0.82"
   },
   "devDependencies": {},
   "scripts": {
@@ -15,7 +16,6 @@
     "url": "git+https://github.com/JaredMathis/tictactoe.git"
   },
   "author": "",
-  "license": "ISC",
   "bugs": {
     "url": "https://github.com/JaredMathis/tictactoe/issues"
   },
